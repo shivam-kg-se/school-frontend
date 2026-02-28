@@ -1,0 +1,140 @@
+# =====================================================================
+#  GOOGLE SHEETS SETUP GUIDE — Greenwood Academy Website
+#  Save this as reference. Create 4 tabs in ONE Google Sheet.
+# =====================================================================
+
+# ─────────────────────────────────────────────────────────────────────
+#  TAB 1: "Exam Schedule"   (gid=0 by default for first tab)
+#  Columns: date | day | subject | class | time
+# ─────────────────────────────────────────────────────────────────────
+EXAM_SCHEDULE_HEADERS:
+date,day,subject,class,time
+
+SAMPLE_DATA:
+Apr 10,Thu,Mathematics,All Classes,9:00-11:30 AM
+Apr 12,Sat,English,All Classes,9:00-11:30 AM
+Apr 14,Mon,Science,VI - VIII,9:00-11:30 AM
+Apr 16,Wed,Social Studies,VI - VIII,9:00-11:30 AM
+Apr 18,Fri,Hindi,All Classes,9:00-11:30 AM
+Apr 20,Sun,Computer Science,IV - VIII,9:00-10:30 AM
+
+
+# ─────────────────────────────────────────────────────────────────────
+#  TAB 2: "Notices"
+#  Columns: id | title | category | date | urgent | content
+#  urgent: true or false
+#  category: Admission / Event / Academic / Exam / Facility / Meeting
+# ─────────────────────────────────────────────────────────────────────
+NOTICES_HEADERS:
+id,title,category,date,urgent,content
+
+SAMPLE_DATA:
+1,Admission Open for Session 2025-26,Admission,Feb 20 2025,true,Applications are now being accepted for all classes from Nursery to Class VIII for the academic year 2025-26. Last date to apply is March 31 2025.
+2,Annual Prize Distribution Ceremony,Event,Feb 15 2025,false,The Annual Prize Distribution Ceremony will be held on February 28 at 10:00 AM in the school auditorium.
+3,CBSE Board Exam Timetable Released,Exam,Feb 05 2025,true,CBSE has released the board examination timetable. Students can download from the CBSE website.
+4,New Library Books Arrival,Facility,Jan 28 2025,false,Over 500 new books have been added to the school library including NCERT supplementary materials.
+5,Parent-Teacher Meeting Schedule,Meeting,Jan 20 2025,false,Quarterly PTM is scheduled for February 8 from 9 AM to 1 PM. Classes I-IV: 9-10:30 AM and V-VIII: 11 AM-1 PM.
+6,Winter Vacation Schedule,Academic,Feb 10 2025,false,School will remain closed from December 25 to January 5. Classes resume on January 6.
+
+
+# ─────────────────────────────────────────────────────────────────────
+#  TAB 3: "Events"
+#  Columns: date | month | title | category | desc
+#  category: Academic / Sports / Meeting / Cultural
+# ─────────────────────────────────────────────────────────────────────
+EVENTS_HEADERS:
+date,month,title,category,desc
+
+SAMPLE_DATA:
+Mar 15,2025,Annual Science Fair,Academic,Students showcase innovative projects in physics chemistry and biology.
+Mar 22,2025,Sports Day 2025,Sports,Inter-house competitions in athletics team sports and individual events.
+Apr 05,2025,Parent-Teacher Meet,Meeting,Quarterly progress review and open interaction between parents and teachers.
+Apr 18,2025,Cultural Fest Utsav,Cultural,A celebration of art dance music and drama by talented students.
+
+
+# ─────────────────────────────────────────────────────────────────────
+#  TAB 4: "Homework"
+#  Columns: class | subject | title | due | status
+#  status: Pending / Due Today / Submitted / Overdue
+# ─────────────────────────────────────────────────────────────────────
+HOMEWORK_HEADERS:
+class,subject,title,due,status
+
+SAMPLE_DATA:
+Class VIII,Mathematics,Chapter 12: Exponents & Powers,Mar 18,Pending
+Class VIII,English,Essay Writing: My Favourite Season,Mar 19,Pending
+Class VII,Science,Draw and label plant cell diagram,Mar 17,Due Today
+Class VI,Social Studies,Map work - Rivers of India,Mar 20,Pending
+Class V,Hindi,निबंध लेखन - मेरा विद्यालय,Mar 18,Pending
+
+
+# =====================================================================
+#  STEP-BY-STEP SETUP
+# =====================================================================
+
+STEP 1: Create the Google Sheet
+  → Go to sheets.google.com
+  → Click "+ New Spreadsheet"
+  → Name it: "Greenwood Academy Website Data"
+
+STEP 2: Create 4 tabs
+  → Right-click the default "Sheet1" tab → Rename → "Exam Schedule"
+  → Click "+" to add new tab → Name it "Notices"
+  → Click "+" to add new tab → Name it "Events"
+  → Click "+" to add new tab → Name it "Homework"
+
+STEP 3: Add column headers (Row 1 of each tab)
+  → Copy the HEADERS rows above into Row 1 of each tab
+  → The column names must match EXACTLY (lowercase, no spaces)
+
+STEP 4: Add your data starting from Row 2
+  → Copy the SAMPLE_DATA above as a starting point
+  → Modify with your actual school data
+
+STEP 5: Publish the sheet
+  → File → Share → Publish to web
+  → Choose: Entire Document | CSV format
+  → Click Publish → Confirm
+
+STEP 6: Get your Sheet ID and Tab GIDs
+  → Look at your browser URL when on the sheet:
+    https://docs.google.com/spreadsheets/d/SHEET_ID/edit#gid=GID
+  → Copy the SHEET_ID
+  → Click each tab and note the gid= number for each tab
+
+STEP 7: Update googleSheetConfig.js
+  → Open: src/googleSheetConfig.js
+  → Replace YOUR_GOOGLE_SHEET_ID_HERE with your Sheet ID
+  → Replace the gid numbers for each tab
+
+STEP 8: Save and run
+  → npm run dev
+  → Your website now reads live data from Google Sheets!
+
+# =====================================================================
+#  HOW TO UPDATE AFTER DEPLOYMENT (no code needed!)
+# =====================================================================
+
+TO CHANGE EXAM DATES:
+  1. Open your Google Sheet
+  2. Go to "Exam Schedule" tab
+  3. Edit the date/day/subject/class/time cells
+  4. Save (Ctrl+S) — changes appear on website within 5 minutes!
+
+TO ADD A NEW NOTICE:
+  1. Open "Notices" tab
+  2. Add a new row at the bottom
+  3. Fill in: id, title, category, date, true/false, content
+  4. Save — notice appears on website automatically!
+
+TO UPDATE EVENTS:
+  1. Open "Events" tab
+  2. Edit or add rows
+  3. Save — homepage events section updates automatically!
+
+TO UPDATE HOMEWORK:
+  1. Open "Homework" tab
+  2. Add/edit/delete rows as needed
+  3. Save — Student Corner updates automatically!
+
+NO REDEPLOYMENT REQUIRED! ✅
