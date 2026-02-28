@@ -498,20 +498,3 @@ npm install
 
 ---
 
-## 📄 License
-
-This project is created for educational purposes.  
-Feel free to modify and use for your school or institution.
-
----
-
-## 🙏 Credits
-
-- **React** — [react.dev](https://react.dev)
-- **Vite** — [vitejs.dev](https://vitejs.dev)
-- **Tailwind CSS** — [tailwindcss.com](https://tailwindcss.com)
-- **Google Fonts** — Playfair Display + DM Sans
-
----
-
-> 🌿 **Greenwood Academy** — *Where every child's potential is discovered, nurtured, and celebrated.*
